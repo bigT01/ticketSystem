@@ -10,6 +10,7 @@ import { useSelector } from "react-redux"
 import { IRootState } from "@/store"
 import IconBox from "../icon/icon-box"
 import IconArrowLeft from "../icon/icon-arrow-left"
+import Link from "next/link"
 
 const defaultParams: ICompany = {
         id: '',
@@ -81,10 +82,10 @@ const CompaniesMain = () => {
                             </div>
                             <h5 className="mb-3.5 text-lg font-semibold dark:text-white-light">{company.name}</h5>
                             <p className="mb-3.5 text-[15px]  text-white-dark">{company.projectsCount ? `There ${company.projectsCount > 1? 'were': 'was'} ${company.projectsCount} order${company.projectsCount > 1? 's': ''} from this Company` : "There was not any kind of orders"}</p>
-                            <button type="button" className="group font-semibold text-primary hover:underline">
+                            <Link href={`/orders/${company.id}`} type="button" className="group font-semibold text-primary hover:underline">
                                 Discover{' '}
                                 <IconArrowLeft className="relative inline-block transition-all duration-300 group-hover:translate-x-2 ltr:ml-1 rtl:mr-1 rtl:rotate-180 rtl:group-hover:-translate-x-2" />
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 ))}

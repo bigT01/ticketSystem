@@ -3,6 +3,8 @@ export interface ICompany {
     name : string,
     customer: string,
     projectsCount: number,
+    image_path?: string,
+    projects?: IProject[]
     isLocal?: boolean
 }
 
@@ -14,4 +16,18 @@ export interface IProject {
   price: number;
   isLocal?: boolean
   company?: ICompany
+}
+
+export interface IColumn<T> {
+  header: string; // Заголовок колонки
+  accessor?: keyof T | string; // Ключ для доступа к данным.
+                                // 'keyof T' делает его безопасным для типов.
+                                // 'string' добавляется для вложенных свойств (например, 'company.name')
+  cellRenderer?: (row: T) => React.ReactNode; // Функция для кастомного рендеринга ячейки
+}
+
+// Интерфейс для пропсов компонента таблицы
+export interface IDefaultTableProps<T> {
+  data: T[]; // Массив данных
+  columns: IColumn<T>[]; // Массив конфигураций колонок
 }
