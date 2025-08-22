@@ -78,14 +78,14 @@ const ProjectsMain = () => {
             header: 'Project Name',
             accessor: 'name',
             cellRenderer: (row:IProject) => (
-                <Link href={"#"} className="whitespace-nowrap hover:text-primary hover:underline">{row.name}</Link>
+                <Link href={`/projects/${row?.id}`} className="whitespace-nowrap hover:text-primary hover:underline">{row.name}</Link>
             )
         },
         {
             header: 'Company',
             accessor: 'company.name',
             cellRenderer: (row:IProject) => (
-                <Link href={"#"} className="whitespace-nowrap hover:text-primary hover:underline">
+                <Link href={`/orders/${row?.company?.id}`} className="whitespace-nowrap hover:text-primary hover:underline">
                     {row?.company?.name}
                 </Link>
             )

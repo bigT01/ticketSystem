@@ -18,6 +18,24 @@ export interface IProject {
   company?: ICompany
 }
 
+export interface IStaff {
+  id: string;
+  name: string;
+  image: string;
+}
+
+export interface IDeveloper {
+  id: number;
+  compensation: number;
+  staff: IStaff;
+}
+
+export interface IProjectDevelopers {
+  id: string;
+  name: string;
+  developers: IDeveloper[];
+}
+
 export interface IColumn<T> {
   header: string; // Заголовок колонки
   accessor?: keyof T | string; // Ключ для доступа к данным.

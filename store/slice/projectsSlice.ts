@@ -1,5 +1,5 @@
 // projectsSlice.ts
-import { IProject } from '@/constants/interfaces';
+import { IProject, IProjectDevelopers } from '@/constants/interfaces';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import api from 'utils/axiosInstance';
 
@@ -7,6 +7,7 @@ import api from 'utils/axiosInstance';
 interface ProjectsState {
   projects: IProject[];
   project: IProject | null;
+  projectDevelopers: IProjectDevelopers | null;
   loading: boolean;
   message: string | null;
 }
@@ -14,6 +15,7 @@ interface ProjectsState {
 const initialState: ProjectsState = {
   projects: [],
   project: null,
+  projectDevelopers: null,
   loading: false,
   message: null,
 };
@@ -40,6 +42,18 @@ export const fetchProjectById = createAsyncThunk(
       return res.data;
     } catch (e: any) {
       return rejectWithValue(e.response?.data?.message || 'Ошибка загрузки проекта');
+    }
+  }
+);
+
+export const fetchProjectDevelopers = createAsyncThunk(
+  'projects/fetchProjectDevelopers',
+  async (id: string, { rejectWithValue }) => {
+    try {
+      const res = await api.get(`/projects/developers/${id}`);
+      return res.data;
+    } catch (e: any) {
+      return rejectWithValue(e.response?.data?.message || 'Ошибка загрузки разработчиков проекта');
     }
   }
 );
@@ -114,6 +128,21 @@ const projectsSlice = createSlice({
         state.project = action.payload;
       })
       .addCase(fetchProjectById.rejected, (state, action) => {
+        state.loading = false;
+        state.message = action.payload as string;
+      });
+
+    // fetchProjectDevelopers
+    builder
+      .addCase(fetchProjectDevelopers.pending, (state) => {
+        state.loading = true;
+        state.message = null;
+      })
+      .addCase(fetchProjectDevelopers.fulfilled, (state, action) => {
+        state.loading = false;
+        state.projectDevelopers = action.payload; // тут вернется проект с developers
+      })
+      .addCase(fetchProjectDevelopers.rejected, (state, action) => {
         state.loading = false;
         state.message = action.payload as string;
       });

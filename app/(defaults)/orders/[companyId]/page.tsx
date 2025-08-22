@@ -24,7 +24,7 @@ const Page = () => {
                     </Link>
                 </li>
                 <li>
-                    <Link href="/" className="text-primary before:content-['/'] ltr:before:mr-2 rtl:before:ml-2 ">
+                    <Link href="/orders" className="text-primary before:content-['/'] ltr:before:mr-2 rtl:before:ml-2 ">
                         <span className="hover:underline">Companies</span>
                     </Link>
                 </li>
