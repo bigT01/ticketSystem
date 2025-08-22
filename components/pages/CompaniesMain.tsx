@@ -56,6 +56,7 @@ const CompaniesMain = () => {
             customer: params.customer,
         };  
         dispatch(createCompany(company) as any)
+        setAddCompany(false)
     };
 
     const createCompanyHandler = () => {
@@ -79,7 +80,7 @@ const CompaniesMain = () => {
                                 <IconBox className="h-12 w-12" />
                             </div>
                             <h5 className="mb-3.5 text-lg font-semibold dark:text-white-light">{company.name}</h5>
-                            <p className="mb-3.5 text-[15px]  text-white-dark">There {company.projectsCount > 1? 'were': 'was'} {company.projectsCount} order{company.projectsCount > 1? 's': ''} from this Company</p>
+                            <p className="mb-3.5 text-[15px]  text-white-dark">{company.projectsCount ? `There ${company.projectsCount > 1? 'were': 'was'} ${company.projectsCount} order${company.projectsCount > 1? 's': ''} from this Company` : "There was not any kind of orders"}</p>
                             <button type="button" className="group font-semibold text-primary hover:underline">
                                 Discover{' '}
                                 <IconArrowLeft className="relative inline-block transition-all duration-300 group-hover:translate-x-2 ltr:ml-1 rtl:mr-1 rtl:rotate-180 rtl:group-hover:-translate-x-2" />

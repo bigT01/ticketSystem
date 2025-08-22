@@ -157,7 +157,7 @@ const Sidebar = () => {
                                             <Link href="/orders">Companies</Link>
                                         </li>
                                         <li>
-                                            <Link href="/apps/invoice/preview">Projects</Link>
+                                            <Link href="/projects">Projects</Link>
                                         </li>
                                     </ul>
                                 </AnimateHeight>
