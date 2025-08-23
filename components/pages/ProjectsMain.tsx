@@ -13,6 +13,7 @@ import IconTrashLines from "../icon/icon-trash-lines";
 import { formatDate } from "@/utils/formatDate";
 import Link from "next/link";
 import DefaultProjectsTable from "../tables/defaultProjectsTable";
+import { formatNumber } from "@/utils/formatNumber";
 
 const defaultParams: IProject = {
         id: '',
@@ -92,7 +93,10 @@ const ProjectsMain = () => {
         },
         {
             header: 'Price',
-            accessor: 'price'
+            accessor: 'price',
+            cellRenderer: (row:IProject) => (
+                <span>{formatNumber(row?.price)} тг</span>
+            )
         },
         {
             header: 'Created At',

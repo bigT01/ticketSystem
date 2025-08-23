@@ -30,6 +30,14 @@ export interface IDeveloper {
   staff: IStaff;
 }
 
+export interface ProjectDetail {
+  id: number;
+  project_id: string;
+  estimate_end_date: string;
+  end_date: string | null;
+  start_date: string;
+}
+
 export interface IProjectDevelopers {
   id: string;
   name: string;

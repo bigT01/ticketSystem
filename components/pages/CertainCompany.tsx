@@ -17,6 +17,7 @@ import { IProject } from "@/constants/interfaces";
 import { formatDate } from "@/utils/formatDate";
 import DefaultProjectsTable from "../tables/defaultProjectsTable";
 import Image from "next/image";
+import { formatNumber } from "@/utils/formatNumber";
 
 const CertainCompany = () => {
     const { company, loading, message } = useSelector((state: IRootState) => state.companies);
@@ -34,12 +35,15 @@ const CertainCompany = () => {
             header: 'Project Name',
             accessor: 'name',
             cellRenderer: (row:IProject) => (
-                <Link href={"#"} className="whitespace-nowrap hover:text-primary hover:underline">{row.name}</Link>
+                <Link href={`/projects/${row.id}`} className="whitespace-nowrap hover:text-primary hover:underline">{row.name}</Link>
             )
         },
         {
             header: 'Price',
-            accessor: 'price'
+            accessor: 'price',
+            cellRenderer: (row:IProject) => (
+                <span>{formatNumber(row?.price)} тг</span>
+            )
         },
         {
             header: 'Created At',
