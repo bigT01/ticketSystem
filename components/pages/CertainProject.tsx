@@ -11,14 +11,14 @@ import DefaultProjectsTable from "../tables/defaultProjectsTable";
 import { formatNumber } from "@/utils/formatNumber";
 import ProjectTotalFee from "../cards/ProjectTotalFee";
 import { fetchProjectDetailById } from "@/store/slice/projectDetailsSlice";
-import getProgressDateToday from "@/utils/getProgressDateToday";
-import { getDaysLeft } from "@/utils/getDaysLeft";
-import { diffDays } from "@/utils/diffDays";
 import ProjectDetailsCard from "../cards/ProjectDetailsCard";
+import { fetchMilestonesByProject } from "@/store/slice/milestoneSlice";
+import ProjectMilestoneCard from "../cards/ProjectMilestoneCard";
 
 const CertainProject = () => {
     const dispatch = useDispatch()
     const { project, projectDevelopers, loading, message } = useSelector((state: IRootState) => state.projects);
+    const { milestones } = useSelector((state: IRootState) => state.milestone);
 
     const [developerList, setDeveloperList] = useState<IDeveloper[]>([])
     
@@ -26,6 +26,7 @@ const CertainProject = () => {
         if(project?.id){
             dispatch(fetchProjectDevelopers(project.id) as any)
             dispatch(fetchProjectDetailById(project.id) as any)
+            dispatch(fetchMilestonesByProject(project.id) as any)
         }
     }, [project, dispatch])
 
@@ -80,6 +81,9 @@ const CertainProject = () => {
                 <div className="w-4/12 relative">
                     <ProjectTotalFee/>
                 </div>
+            </div>
+            <div className="flex gap-4 mb-5">
+                <ProjectMilestoneCard/>
             </div>
             <div className="flex gap-4">
                 <ProjectDetailsCard/>
