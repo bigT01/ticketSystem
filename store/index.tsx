@@ -5,6 +5,7 @@ import companiesSlice from "@/store/slice/companiesSlice";
 import projectsSlice from "@/store/slice/projectsSlice";
 import projectDetailsSlice from "@/store/slice/projectDetailsSlice";
 import milestoneSlice from "@/store/slice/milestoneSlice";
+import projectUsageSlice from "@/store/slice/projectUsageSlice";
 
 const rootReducer = combineReducers({
     themeConfig: themeConfigSlice,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
     companies: companiesSlice,
     projects: projectsSlice,
     projectDetails: projectDetailsSlice,
-    milestone: milestoneSlice
+    milestone: milestoneSlice,
+    projectUsage: projectUsageSlice
 });
 
 export default configureStore({

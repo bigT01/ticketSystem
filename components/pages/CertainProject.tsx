@@ -14,6 +14,8 @@ import { fetchProjectDetailById } from "@/store/slice/projectDetailsSlice";
 import ProjectDetailsCard from "../cards/ProjectDetailsCard";
 import { fetchMilestonesByProject } from "@/store/slice/milestoneSlice";
 import ProjectMilestoneCard from "../cards/ProjectMilestoneCard";
+import ProjectUsageCard from "../cards/ProjectUsageCard";
+import { fetchProjectUsage } from "@/store/slice/projectUsageSlice";
 
 const CertainProject = () => {
     const dispatch = useDispatch()
@@ -27,6 +29,7 @@ const CertainProject = () => {
             dispatch(fetchProjectDevelopers(project.id) as any)
             dispatch(fetchProjectDetailById(project.id) as any)
             dispatch(fetchMilestonesByProject(project.id) as any)
+            dispatch(fetchProjectUsage(project.id) as any)
         }
     }, [project, dispatch])
 
@@ -85,8 +88,11 @@ const CertainProject = () => {
             <div className="flex gap-4 mb-5">
                 <ProjectMilestoneCard/>
             </div>
-            <div className="flex gap-4">
+            <div className="flex gap-4 mb-5">
                 <ProjectDetailsCard/>
+            </div>
+            <div className="flex gap-4">
+                <ProjectUsageCard/>
             </div>
         </div>
     )
