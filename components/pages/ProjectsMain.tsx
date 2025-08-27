@@ -104,6 +104,13 @@ const ProjectsMain = () => {
             cellRenderer: (row:IProject) => formatDate(row.created_at)
         },
         {
+            header: 'Project Statistics',
+            accessor: 'projectStatConnection',
+            cellRenderer: (row:IProject) => (
+                <span className={row.projectStatConnection ? 'text-success' : 'text-danger'}>{row?.projectStatConnection ? 'connected' : 'disconnected'}</span>
+            )
+        },
+        {
             header: 'Actions',
             cellRenderer: (row:IProject) => (
                 <div className="text-center">

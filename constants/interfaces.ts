@@ -16,6 +16,7 @@ export interface IProject {
   price: number;
   isLocal?: boolean
   company?: ICompany
+  projectStatConnection?: boolean
 }
 
 export interface IStaff {
