@@ -16,7 +16,7 @@ const DefaultProjectsTable = <T extends { id: string | number }>({
   };
 
   return (
-    <div className="table-responsive">
+    <div className="table-responsive w-full">
       <table className="table-hover table">
         <thead>
           <tr>

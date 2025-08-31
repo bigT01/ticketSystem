@@ -3,6 +3,7 @@ import 'react-perfect-scrollbar/dist/css/styles.css';
 import '../styles/tailwind.css';
 import { Metadata } from 'next';
 import { Nunito } from 'next/font/google';
+import 'flatpickr/dist/flatpickr.css';
 
 export const metadata: Metadata = {
     title: {

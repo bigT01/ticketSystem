@@ -19,6 +19,19 @@ export interface IProject {
   projectStatConnection?: boolean
 }
 
+export interface IPayment {
+  id: number;
+  staff_id?: string;
+  project_id: string;
+  amount: number;
+  image_path?: string;
+  method: string;
+  date: string;
+  type: string;
+  project: IProject
+  staff?: IStaff
+}
+
 export interface IStaff {
   id: string;
   name: string;

@@ -6,6 +6,7 @@ import projectsSlice from "@/store/slice/projectsSlice";
 import projectDetailsSlice from "@/store/slice/projectDetailsSlice";
 import milestoneSlice from "@/store/slice/milestoneSlice";
 import projectUsageSlice from "@/store/slice/projectUsageSlice";
+import paymentSlice from "@/store/slice/paymentSlice";
 
 const rootReducer = combineReducers({
     themeConfig: themeConfigSlice,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
     projects: projectsSlice,
     projectDetails: projectDetailsSlice,
     milestone: milestoneSlice,
-    projectUsage: projectUsageSlice
+    projectUsage: projectUsageSlice,
+    payment: paymentSlice
 });
 
 export default configureStore({

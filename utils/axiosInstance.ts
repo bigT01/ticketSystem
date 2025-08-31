@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:3000', // базовый URL твоего API
+  baseURL: 'https://crm-backend-production-6ee1.up.railway.app', // базовый URL твоего API
   timeout: 10000, // время ожидания (мс)
   headers: {
     'Content-Type': 'application/json',
